@@ -1,1 +1,0 @@
-void CountdownMode(void);

@@ -416,16 +416,6 @@
               <FilePath>.\random.s</FilePath>
             </File>
             <File>
-              <FileName>DAC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\DAC.c</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC.c</FilePath>
-            </File>
-            <File>
               <FileName>Timer0.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Timer0.c</FilePath>
@@ -434,11 +424,6 @@
               <FileName>Timer1.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Timer1.c</FilePath>
-            </File>
-            <File>
-              <FileName>Sound.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Sound.c</FilePath>
             </File>
             <File>
               <FileName>LCD.s</FileName>
@@ -451,21 +436,6 @@
               <FilePath>.\Print.s</FilePath>
             </File>
             <File>
-              <FileName>SpaceInvaders.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SpaceInvaders.c</FilePath>
-            </File>
-            <File>
-              <FileName>ST7735.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ST7735.c</FilePath>
-            </File>
-            <File>
-              <FileName>tm4c123gh6pm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\tm4c123gh6pm.h</FilePath>
-            </File>
-            <File>
               <FileName>HighNoon.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HighNoon.c</FilePath>
@@ -474,16 +444,6 @@
               <FileName>IO.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\IO.c</FilePath>
-            </File>
-            <File>
-              <FileName>Character.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Character.c</FilePath>
-            </File>
-            <File>
-              <FileName>Lobby.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Lobby.c</FilePath>
             </File>
             <File>
               <FileName>GameMode.c</FileName>
@@ -496,29 +456,9 @@
               <FilePath>.\SpeedMode.c</FilePath>
             </File>
             <File>
-              <FileName>PracticeMode.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PracticeMode.c</FilePath>
-            </File>
-            <File>
-              <FileName>CountdownMode.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\CountdownMode.c</FilePath>
-            </File>
-            <File>
-              <FileName>CommonSprites.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\CommonSprites.c</FilePath>
-            </File>
-            <File>
               <FileName>SysTick.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SysTick.c</FilePath>
-            </File>
-            <File>
-              <FileName>BackgroundSprites.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\BackgroundSprites.c</FilePath>
             </File>
             <File>
               <FileName>ServoControl.c</FileName>
@@ -529,11 +469,6 @@
               <FileName>TargetInterrupts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\TargetInterrupts.c</FilePath>
-            </File>
-            <File>
-              <FileName>LCDCalibrate.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\LCDCalibrate.c</FilePath>
             </File>
             <File>
               <FileName>Lab9.c</FileName>

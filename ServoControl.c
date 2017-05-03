@@ -1,14 +1,13 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
-#include "ST7735.h"
 #include "Random.h"
 #include "TExaS.h"
-#include "ADC.h"
 
-#define UP_COUNT 6300
-#define DOWN_COUNT 9500
-#define TOTAL_COUNT 64600
-#define CYCLE_COUNT 30
+
+uint32_t UP_COUNT = 19500;
+uint32_t DOWN_COUNT = 31000;
+uint32_t TOTAL_COUNT = 319770;
+uint32_t CYCLE_COUNT = 10;
 
 
 void DisableInterrupts(void); // Disable interrupts
@@ -27,6 +26,12 @@ void PortE_Init(){
 
 
 void ServoUp(uint8_t servo){
+	if(servo == 5)
+		UP_COUNT = 18000;
+	else if(servo == 0)
+		UP_COUNT = 18750;
+	
+		
 	DisableInterrupts();
 	uint32_t pulseCounter = UP_COUNT;
 	uint32_t inverseCounter = (TOTAL_COUNT-pulseCounter);
@@ -55,6 +60,10 @@ void ServoUp(uint8_t servo){
 }
 
 void ServoDown(uint8_t servo){
+	
+	if((servo == 1) ||( servo ==3))
+		DOWN_COUNT = 32000;
+
 	DisableInterrupts();
 	uint32_t pulseCounter = DOWN_COUNT;
 	uint32_t inverseCounter = (TOTAL_COUNT-pulseCounter);
