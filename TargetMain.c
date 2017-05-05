@@ -19,12 +19,17 @@ uint8_t ready_bit;
 uint8_t active_target[2];
 uint8_t player_mode;
 uint8_t game_status;
-uint8_t game_mode = -1;
+uint8_t game_mode = 5;
 int32_t p1_score;
 int32_t p2_score;
 uint32_t count_time = 20; 
 uint32_t level = 1;
 uint8_t count_over = 0;
+uint8_t player_mode_last = 5;
+uint8_t game_status_last = 5;
+uint8_t game_mode_last = 5;
+
+
 uint8_t count_targets[6] = {1,0,0,0,0,0};
 
 
@@ -61,8 +66,8 @@ void ServoAction(uint8_t num_player){
 	
 	if(num_player==1)
 		rand+=3;
-	
-	active_target[num_player] = rand;
+	rand = (active_target[num_player]+1)%3;
+	active_target[num_player] =rand ;
 	ServoUp(rand);
 
 }
@@ -96,6 +101,12 @@ void SpeedShotHandler(void){
 			p2_score++;
 			ServoAction(1);
 		}
+		hit_array[0] = 0;
+	hit_array[1] = 0;
+	hit_array[2] = 0;
+	hit_array[3] = 0;
+	hit_array[4] = 0;
+	hit_array[5] = 0;
 
 }
 
@@ -155,12 +166,9 @@ void CountServosMove(){
 }
 
 void SpeedLoop(){
-			if(game_status == 0){
-				for(int i = 0; i<6; i++){
-					ServoDown(i);
-				}
-				p1_score = 0;
-				p2_score = 0;
+	if(game_status==0){
+				//p1_score = 0;
+				//p2_score = 0;
 			if(player_mode==1){
 				active_target[0] = 0;
 				ServoUp(active_target[0]);
@@ -171,7 +179,13 @@ void SpeedLoop(){
 				active_target[1] = 5;
 				ServoUp(active_target[1]);
 			}
-
+			
+				for(int i = 1; i<6; i++){
+					if(i!=5)
+					ServoDown(i);
+				}
+				
+			
 		}
 		else if(game_status ==1)
 			SpeedShotHandler();
@@ -192,7 +206,7 @@ void CountdownLoop(){
 			ServoUp(0);
 			count_over = 0;
 		}
-		else if(game_status ==1){
+		else{
 			uint32_t old_level = level;
 			level = p1_score/10;
 			if(level>old_level)
@@ -215,10 +229,9 @@ void CountdownLoop(){
 				CountServosMove();
 			}
 		}
-		else if(game_status ==2){
-			ServoDown(active_target[0]);
+		
 		}
-}
+
 
 void Timer0Handler(void){
 	TIMER0_TAILR_R = ((count_time)/0.0000000125)-1;
@@ -260,17 +273,29 @@ int main (void){
 		while(bit != 0x02){ //while uart is not start bit keep looping
 			FiFo_Get(&bit);
 		}
+		DisableInterrupts();
 		FiFo_Get(&bit);
-		game_mode = bit;
+		if(bit == game_mode_last){
+			game_mode = bit;
+		}
+		game_mode_last = bit;
 		
 		FiFo_Get(&bit);
-		game_status = bit;
+		if(bit == game_status_last){
+			game_status = bit;
+		}
+		game_status_last = bit;
 		
 		FiFo_Get(&bit);
-		player_mode = bit;
-
+		if(bit == player_mode_last){
+			player_mode = bit;
+		}
+		player_mode_last = bit;
+		
 		FiFo_Get(&bit);	//skip end bits
 		FiFo_Get(&bit);
+		
+		EnableInterrupts();
 		
 	}
 	
@@ -298,5 +323,11 @@ void SysTick_Handler(void){
 	GPIO_PORTF_DATA_R ^= 0x04;
 	
 }
+
+
+
+
+
+		
 
 

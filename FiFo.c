@@ -10,7 +10,7 @@
 // --UUU-- Declare state variables for FiFo
 //        size, buffer, put and get indexes
 
-#define SIZE 10
+#define SIZE 14
 uint32_t static putI;
 uint32_t static getI;
 int32_t static FIFO[SIZE];
